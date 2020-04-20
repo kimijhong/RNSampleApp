@@ -23,7 +23,7 @@ const TabSecond = ({navigation}:Props) => {
             <Content style={{ padding: 10 }}>
             <FlatList
                     data={response.data}
-                    renderItem={({ item }) => <MenuListItem title={item.title} navigate={{rootScreen:NaviNames.SecondStack , screen:item.screen}} navigation={navigation}></MenuListItem>}
+                    renderItem={({ item }) => <MenuListItem title={item.title} navigate={{rootScreen:NaviNames.SecondStack , nextScreen:item.screen}} navigation={navigation}></MenuListItem>}
                 />
             </Content>
         </Container>);

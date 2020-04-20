@@ -9,7 +9,7 @@ import MenuListItem from '~/components/listitem/MenuListItem';
 const response = { 
     code : 20,
     data : [
-        {title: 'Devin',screen:NaviNames.ComponetsScreen},
+       // {title: 'Devin',screen:NaviNames.ComponetsScreen},
        ] 
 }
 
@@ -23,7 +23,7 @@ const TabThird = ({navigation}:Props) => {
             <Content style={{ padding: 10 }}>
             <FlatList
                     data={response.data}
-                    renderItem={({ item }) => <MenuListItem title={item.title} rootscreen={NaviNames.FirstStack} navigate={{screen:item.screen }}  navigation={navigation}></MenuListItem>}
+                    renderItem={({ item }) => <MenuListItem title={item.title} navigate={{rootScreen:NaviNames.ThirdStack , nextScreen:item.screen}} navigation={navigation}></MenuListItem>}
                 />
             </Content>
         </Container>);

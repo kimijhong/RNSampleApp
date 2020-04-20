@@ -155,7 +155,7 @@ const FirstStack = ({navigation}:Props) => {
             <Stack.Screen name={NaviNames.ModalTestScreen} component={ModalTestScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.SqlLightScreen} component={SqlLightScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.MapScreen} component={MapScreen}  options={HeaderBackOptions}/>
-            <Stack.Screen name={NaviNames.RnNavigationScreen} component={RnNavigationScreen}/>
+            <Stack.Screen name={NaviNames.RnNavigationScreen} component={RnNavigationScreen} options={{headerShown:false}}/>
             <Stack.Screen name={'DetailsScreen'} component={DetailsScreen} initialParams={{ itemId: 0 }} options={({ route }: Props) => ({ title: route.params.name })} />
             <Stack.Screen name={'CreatePostScreen'} component={CreatePostScreen} initialParams={{ itemId: 0 }} options={{
                title: 'My home',

@@ -4,7 +4,7 @@ import { StyleSheet, Alert } from "react-native";
 
 interface ItemProps{
     title:string
-    navigate:{rootScreen:string,screen:string}
+    navigate:{rootScreen:string,nextScreen:string}
     navigation:any
     param?:any
 }
@@ -12,16 +12,9 @@ interface ItemProps{
 const MenuListItem = (props:ItemProps) =>
 {
     const {title,navigate,navigation} = props;
-    
-
     const colorCode = '#' + Math.round(Math.random() * 0xff0000).toString(16);
-
-  
-
     return <Button style={[styles.button, {backgroundColor:colorCode}]} onPress={()=>{
-        //Alert.alert(navigate.rootScreen + " " + navigate.screen + " " +  JSON.stringify(navigation))
-        //navigation.navigate("FirstStack","NetWorkingScreen");
-        navigation.navigate(navigate.rootScreen,navigate.screen);
+        navigation.navigate(navigate.rootScreen,{screen:navigate.nextScreen});
     }}><Text style={styles.buttonText}>{title}</Text></Button>
 }
 
@@ -43,3 +36,10 @@ const styles = StyleSheet.create({
 });
 
 export default MenuListItem;
+
+/**
+ * navigation.navigate('Root');
+ * navigation.navigate('Root', { screen: 'Settings' });
+ * navigation.navigate('Root', { screen: 'Settings', params: { user: 'jane' },});
+ * navigation.navigate('Root', { screen: 'Settings', params: { screen: 'Sound', params: { screen: 'Media',},},});
+ */
