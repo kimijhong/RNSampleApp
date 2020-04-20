@@ -9,7 +9,7 @@ import MenuListItem from '~/components/listitem/MenuListItem';
 const response = { 
     code : 20,
     data : [
-        {rootScreen:'MainBottomTabStack',title: 'PinNumberTestScreen',screen:NaviNames.PinNumberTestScreen},
+        {title: 'PinNumberTestScreen',screen:NaviNames.PinNumberTestScreen},
     ] 
 }
 
@@ -22,9 +22,9 @@ const TabSecond = ({navigation}:Props) => {
         <Container>
             <Content style={{ padding: 10 }}>
             <FlatList
-            data={response.data}
-            renderItem={({ item }) => <MenuListItem title={item.title} rootscreen='MainBottomTabStack' navigate={{screen:'TabSecond',params:{screen:item.screen}}}  navigation={navigation}></MenuListItem>}
-            />
+                    data={response.data}
+                    renderItem={({ item }) => <MenuListItem title={item.title} navigate={{rootScreen:NaviNames.SecondStack , screen:item.screen}} navigation={navigation}></MenuListItem>}
+                />
             </Content>
         </Container>);
 }

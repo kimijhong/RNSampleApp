@@ -1,10 +1,17 @@
 export default {
     SplashScreen: 'SplashScreen',
 
+    MainBottomTabStack:"MainBottomTabStack",
+
     TabFirst: 'TabFirst',
     TabSecond: 'TabSecond',
     TabThird: 'TabThird',
     TabFourth: 'TabFourth',
+
+    FirstStack:"FirstStack",
+    SecondStack:"SecondStack",
+    ThirdStack:"ThirdStack",
+    FourthStack:"FourthStack",
 
     ComponetsScreen : 'ComponetsScreen',
     NetWorkingScreen: 'NetWorkingScreen',

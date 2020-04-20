@@ -4,25 +4,24 @@ import { StyleSheet, Alert } from "react-native";
 
 interface ItemProps{
     title:string
-    rootscreen:string
-    param?:any
+    navigate:{rootScreen:string,screen:string}
     navigation:any
-    navigate:{}
+    param?:any
 }
 
 const MenuListItem = (props:ItemProps) =>
 {
-    const {title,rootscreen,navigate,navigation} = props;
+    const {title,navigate,navigation} = props;
     
 
     const colorCode = '#' + Math.round(Math.random() * 0xff0000).toString(16);
 
+  
+
     return <Button style={[styles.button, {backgroundColor:colorCode}]} onPress={()=>{
-        
-        
-       // navigation.navigate(itemData.rootScreen,{screen:itemData.screen,params:itemData.param});
-      // navigation.navigate('TabSecond',{screen:'TabSecond',params:{screen:itemData.screen}});
-      navigation.navigate(rootscreen,navigate);
+        //Alert.alert(navigate.rootScreen + " " + navigate.screen + " " +  JSON.stringify(navigation))
+        //navigation.navigate("FirstStack","NetWorkingScreen");
+        navigation.navigate(navigate.rootScreen,navigate.screen);
     }}><Text style={styles.buttonText}>{title}</Text></Button>
 }
 

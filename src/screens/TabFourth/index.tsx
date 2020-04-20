@@ -22,9 +22,9 @@ const TabFourth = ({navigation}:Props) => {
         <Container>
             <Content style={{ padding: 10 }}>
             <FlatList
-            data={response.data}
-            renderItem={({item}) => <MenuListItem itemData={item} navigation={navigation}></MenuListItem>}
-            />
+                    data={response.data}
+                    renderItem={({ item }) => <MenuListItem title={item.title} rootscreen={NaviNames.FirstStack} navigate={{screen:item.screen }}  navigation={navigation}></MenuListItem>}
+                />
             </Content>
         </Container>);
 }

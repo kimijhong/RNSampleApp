@@ -16,7 +16,6 @@ interface Props{
 interface Item{
     title:string,
     screen:string,
-    rootScreen:string
     param?:{}
 }
 
@@ -28,20 +27,19 @@ interface IMenuItem{
 const response:IMenuItem = { 
     code : 20,
     data : [
-        {title: 'RnNavigationScreen',rootScreen:'FirstStack',screen:'RnNavigationScreen'},
-        {title: 'ReduxScreen',rootScreen:'FirstStack',screen:NaviNames.ReduxScreen,param:{itemId:10,otherParam:'hihi'}},
-        {title: 'AnimatableScreen',rootScreen:'FirstStack',screen:NaviNames.AnimatableScreen},
-        {title: 'ComponetsScreen',rootScreen:'FirstStack',screen:NaviNames.ComponetsScreen},
-        {title: 'LottoGameScreen',rootScreen:'FirstStack',screen:NaviNames.LottoGameScreen},
-        {title: 'JavaScriptScreen',rootScreen:'FirstStack',screen:NaviNames.JavaScriptScreen},
-        {title: 'NativeBridgeScreen',rootScreen:'FirstStack',screen:NaviNames.NativeBridgeScreen},
-        {title: 'NetWorkingScreen',rootScreen:'FirstStack',screen:NaviNames.NetWorkingScreen},
-        {title: 'ReactNativeScreen',rootScreen:'FirstStack',screen:NaviNames.ReactNativeScreen},
-       
-        {title: NaviNames.ScanScreen,rootScreen:'FirstStack',screen:NaviNames.ScanScreen},
-        {title: NaviNames.ModalTestScreen,rootScreen:'FirstStack',screen:NaviNames.ModalTestScreen},
-        {title: NaviNames.SqlLightScreen,rootScreen:'FirstStack',screen:NaviNames.SqlLightScreen},
-        {title: NaviNames.MapScreen,rootScreen:'FirstStack',screen:NaviNames.MapScreen},
+        {title: 'RnNavigationScreen',screen:'RnNavigationScreen'},
+        {title: 'ReduxScreen',screen:NaviNames.ReduxScreen,param:{itemId:10,otherParam:'hihi'}},
+        {title: 'AnimatableScreen',screen:NaviNames.AnimatableScreen},
+        {title: 'ComponetsScreen',screen:NaviNames.ComponetsScreen},
+        {title: 'LottoGameScreen',screen:NaviNames.LottoGameScreen},
+        {title: 'JavaScriptScreen',screen:NaviNames.JavaScriptScreen},
+        {title: 'NativeBridgeScreen',screen:NaviNames.NativeBridgeScreen},
+        {title: 'NetWorkingScreen',screen:NaviNames.NetWorkingScreen},
+        {title: 'ReactNativeScreen',screen:NaviNames.ReactNativeScreen},
+        {title: NaviNames.ScanScreen,screen:NaviNames.ScanScreen},
+        {title: NaviNames.ModalTestScreen,screen:NaviNames.ModalTestScreen},
+        {title: NaviNames.SqlLightScreen,screen:NaviNames.SqlLightScreen},
+        {title: NaviNames.MapScreen,screen:NaviNames.MapScreen},
     ] 
 }
 
@@ -54,11 +52,9 @@ const TabFirst = (props:Props) => {
     return (
         <Container>
             <Content style={{ padding: 10 }}>
-            <Text>{I18n.t("hello")}</Text>
-            <Text>{JSON.stringify(props)}</Text>
                 <FlatList
                     data={response.data}
-                    renderItem={({ item }) => <MenuListItem title={item.title} rootscreen='FirstStack' navigate={{screen:item.screen}}  navigation={navigation}></MenuListItem>}
+                    renderItem={({ item }) => <MenuListItem title={item.title} navigate={{rootScreen:NaviNames.FirstStack , screen:item.screen}} navigation={navigation}></MenuListItem>}
                 />
             </Content>
         </Container>);

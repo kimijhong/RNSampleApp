@@ -22,12 +22,9 @@ const ReduxScreen = (props:Props)=>{
            
         }
     }, [])
-
-
    
         return (
             <Container>
-                 <HeaderBack navigation={navigation} title='reactn'></HeaderBack>
                 <Counter/>
             </Container>
         );

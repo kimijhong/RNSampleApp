@@ -1,68 +1,89 @@
-import { Container, Content } from "native-base"
+import { Container, Content, Header, Left, Icon, Body, Button, View, Text, Title, Right, } from "native-base"
 import React, { useEffect, useLayoutEffect } from "react"
-import { Button, View, Text, Alert } from "react-native";
+import { Alert } from "react-native";
 import HeaderBack from "~/components/HeaderBack";
 
 interface Props {
-    navigation: any
-    route: { params: { post: string } }
+  navigation: any
+  route: {
+    key: string
+    params: { post: string }
+  }
 }
 
 const RnNavigationScreen = ({ navigation, route }: Props) => {
 
-    const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
-    
+  useEffect(() => {
+    if (route.params?.post) {
+      // Post updated, do something with `route.params.post`
+      // For example, send the post to the server
+    }
+  }, [route.params?.post]);       // 결과 값을 돌려 받을때 
 
-    useEffect(() => {
-        if (route.params?.post) {
-            // Post updated, do something with `route.params.post`
-            // For example, send the post to the server
-        }
-    }, [route.params?.post]);       // 결과 값을 돌려 받을때 
 
-  
-    /*
-    useLayoutEffect(() => {
-        navigation.setOptions({
-          headerRight: () => (
-            <Button onPress={() => setCount(c => c + 1)} title="Update count" />
-          ),
-          headerLeft: () => (
-            <Button
-                title="뒤로가기"
-                color="#fff"
-                onPress={()=>{{navigation.goBack()}}}
-            />
-        )
-        });
-    }, [navigation, setCount]);*/
+  /*
+  useLayoutEffect(() => {
+      navigation.setOptions({
+        headerRight: () => (
+          <Button onPress={() => setCount(c => c + 1)} title="Update count" />
+        ),
+        headerLeft: () => (
+          <Button
+              title="뒤로가기"
+              color="#fff"
+              onPress={()=>{{navigation.goBack()}}}
+          />
+      )
+      });
+  }, [navigation, setCount]);*/
 
-    return <Container>
-      <HeaderBack navigation={navigation} route={route} title='reactn'></HeaderBack>
-        <Content>
-          
-            <Button
-                title="Go to Details : navigate"
-                onPress={() => navigation.navigate('DetailsScreen', {
-                    itemId: 86,
-                    otherParam: 'anything you want here',
-                })}
-            />
+  return <Container>
+    <Header>
+      <Left>
+        <Button transparent onPress={() => { navigation.goBack() }}>
+          <Icon name='arrow-back' />
+          <Text>뒤로</Text>
+        </Button >
+      </Left>
+      <Body>
+        <Title>{route.key}</Title>
+      </Body>
+      <Right>
+        <Text onPress={() => {
+          setCount(c => c + 1)
+        }}>Update count</Text>
+      </Right>
+    </Header>
 
-            <Button
-                title="Create post"
-                onPress={() => navigation.navigate('CreatePostScreen')}
-            />
+    <Content>
+      <Body>
+        <Button
+          style={{ marginTop: 10 }}
+          onPress={() => navigation.navigate('DetailsScreen', {
+            itemId: 86,
+            otherParam: 'anything you want here',
+          })}>
+          <Text>Go to Details : navigate</Text>
+        </Button>
 
-            <Button
-                title="Update the title"
-                onPress={() => navigation.setOptions({ title: 'Updated!' })} //옵션으로 제어할수 있다./.
-            />
-            <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
-            <Text style={{ margin: 10 }}>count: {count}</Text>
-        </Content>
-    </Container>
+        <Button
+          style={{ marginTop: 10 }}
+          onPress={() => navigation.navigate('CreatePostScreen')}>
+          <Text>Create post</Text>
+        </Button>
+
+        <Button
+          style={{ marginTop: 10 }}
+          onPress={() => navigation.setOptions({ title: 'Updated!' })}>
+          <Text>Update the title</Text>
+        </Button>
+        <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
+        <Text style={{ margin: 10 }}>count: {count}</Text>
+      </Body>
+    </Content>
+  </Container>
 
 }
 
