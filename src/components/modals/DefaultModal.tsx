@@ -20,7 +20,6 @@ const DefaultModal = ({ isModalVisible, title, msg, cancelText, confirmText, con
         ? Dimensions.get("window").height
         : require("react-native-extra-dimensions-android").get("REAL_WINDOW_HEIGHT");
 
-
     return (
         <View>
             <Modal

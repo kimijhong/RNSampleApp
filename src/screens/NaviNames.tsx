@@ -10,7 +10,8 @@ export default {
 
     FirstStack:"FirstStack",
     SecondStack:"SecondStack",
-    ThirdStack:"ThirdStack",
+    ThirdStackRN:"ThirdStackRN",
+    ThirdStackNavigation:"ThirdStackNavigation",
     FourthStack:"FourthStack",
 
     ComponetsScreen : 'ComponetsScreen',
@@ -20,7 +21,7 @@ export default {
     JavaScriptScreen: 'JavaScriptScreen',
     ReduxScreen: 'ReduxScreen',
     NativeBridgeScreen: 'NativeBridgeScreen',
-    ReactNativeScreen: 'ReactNativeScreen',
+    RNDesignScreen: 'RNDesignScreen',
     ScanScreen: 'ScanScreen',
     ModalTestScreen :'ModalTestScreen',
     PinNumberTestScreen :'PinNumberTestScreen',
@@ -28,7 +29,17 @@ export default {
     MapScreen :'MapScreen',
     RnNavigationScreen:'RnNavigationScreen',
     RnNavigationStack:'RnNavigationStack',
+    PermissionScreen:'PermissionScreen',
     
+
+
+    CosBallAppApiScreen:'CosBallAppApiScreen',
+
+
+    ThirdStackRNScreen:'ThirdStackRNScreen',
+    
+    
+    ThirdStackNavigationScreen:'ThirdStackNavigationScreen',
 
     SplashStack: 'SplashStack',
     MainStack: 'MainStack',

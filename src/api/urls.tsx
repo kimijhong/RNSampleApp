@@ -1,3 +1,12 @@
+
+export const OPEN_WEATHER_API_KEY = '44b4becd94364c7bc1da53458f821e61';
+
+export const ROOT_URL: string = 'http://192.168.0.130/api/v1/'
+export const OPEN_WEATHER_URL: string = 'http://api.openweathermap.org/data/2.5/weather'
+
+
+export const getOpenWeatherUrl = () => `${OPEN_WEATHER_URL}?appid=${OPEN_WEATHER_API_KEY}`;
+
 /*
 export const REGISTRATION_URL = 'https://www.themoviedb.org/account/signup';
 export const RESET_PASSWORD_URL = 'https://www.themoviedb.org/account/reset-password';

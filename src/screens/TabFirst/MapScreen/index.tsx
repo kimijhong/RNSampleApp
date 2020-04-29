@@ -1,13 +1,13 @@
 import { View } from "native-base"
-import React, { useEffect } from "react"
+import React, { useEffect, useLayoutEffect } from "react"
 import MapView, { PROVIDER_DEFAULT , Marker } from 'react-native-maps';
 import { Dimensions, StyleSheet } from "react-native";
-
+import * as Apis from '~/api/Api'
 const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 37.57;
+const LONGITUDE = 126.98;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
@@ -181,11 +181,26 @@ const MapScreen = (props:Props)=>
 {
 
     useEffect(() => {
-        console.log("maps : "+ props);
+      getWather()
         return () => {
         }
     }, [])
 
+    useLayoutEffect(() => {
+      console.log("maps : "+ props);
+      return () => {
+        
+      };
+    }, [])
+
+
+  const getWather = async () => {
+      const data = await Apis.getWatherInfo("37.83", "126.34");
+  }
+
+  
+
+   
   return(<View style={styles.container}>
         <MapView
             provider={PROVIDER_DEFAULT}
@@ -204,6 +219,9 @@ const MapScreen = (props:Props)=>
         </MapView>
       </View>);
 }
+
+
+
 
 
   

@@ -3,13 +3,13 @@ import {
     FlatList
 } from 'react-native';
 import { Container, Content} from 'native-base';
-import NaviNames from '../NaviNames';
+import NaviNames from '~/screens/NaviNames';
 import MenuListItem from '~/components/listitem/MenuListItem';
 
 const response = { 
     code : 20,
     data : [
-       // {title: 'Devin',screen:NaviNames.ComponetsScreen},
+        {title: "RnNavigationScreen",screen:"RnNavigationScreen"},
        ] 
 }
 
@@ -17,16 +17,16 @@ interface Props{
     navigation:any
 }
 
-const TabThird = ({navigation}:Props) => {
+const ThirdStackNavigationScreen = ({navigation}:Props) => {
     return (
         <Container>
             <Content style={{ padding: 10 }}>
             <FlatList
                     data={response.data}
-                    renderItem={({ item }) => <MenuListItem title={item.title} navigate={{rootScreen:NaviNames.ThirdStack , nextScreen:item.screen}} navigation={navigation}></MenuListItem>}
+                    renderItem={({ item }) => <MenuListItem title={item.title} navigate={{rootScreen:NaviNames.ThirdStackNavigation , nextScreen:item.screen}} navigation={navigation}></MenuListItem>}
                 />
             </Content>
         </Container>);
 }
 
-export default TabThird
+export default ThirdStackNavigationScreen

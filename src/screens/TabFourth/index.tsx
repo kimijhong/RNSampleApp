@@ -9,7 +9,7 @@ import MenuListItem from '~/components/listitem/MenuListItem';
 const response = { 
     code : 20,
     data : [
-      //  {title: 'Devin',screen:NaviNames.ComponetsScreen},
+        {title: 'CosBallAppApi',screen:NaviNames.CosBallAppApiScreen},
     ] 
 }
 

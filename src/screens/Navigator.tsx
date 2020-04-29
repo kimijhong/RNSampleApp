@@ -16,30 +16,42 @@ import SplashScreen from '~/screens/SplashScreen'
 /** tab */
 import TabFirst from '~/screens/TabFirst';
 import TabSecond from '~/screens/TabSecond';
-import TabThird from '~/screens/TabThird';
 import TabFourth from '~/screens/TabFourth';
 
 /** tab 1 */
-import ComponetsScreen from '~/screens/TabFirst/ComponetsScreen'
+import ComponetsScreen from '~/screens/TabThird/ThirdStackRNScreen/ComponetsScreen'
 import NetWorkingScreen from '~/screens/TabFirst/NetWorkScreen'
 import LottoGameScreen from '~/screens/TabFirst/GameEnginScreen'
 import AnimatableScreen from '~/screens/TabFirst/AnimatableScreen'
 import JavaScriptScreen from '~/screens/TabFirst/JavaScriptScreen'
 import ReduxScreen from '~/screens/TabFirst/ReduxScreen'
 import NativeBridgeScreen from '~/screens/TabFirst/NativeBridgeScreen'
-import ReactNativeScreen from '~/screens/TabFirst/ReactNativeScreen';
-import ScanScreen from '~/screens/ScanScreen/index.android';
+
+import ScanScreen from '~/screens/TabFirst/ScanScreen/index.android';
 import ModalTestScreen from './TabFirst/ModalTestScreen';
 import SqlLightScreen from './TabFirst/SqlLightScreen';
 import MapScreen from '~/screens/TabFirst/MapScreen';
-import RnNavigationScreen from './TabFirst/RnNavigationScreen';
-import DetailsScreen from './TabFirst/RnNavigationScreen/DetailsScreen';
-import CreatePostScreen from './TabFirst/RnNavigationScreen/CreatePostScreen';
+import RnNavigationScreen from './TabThird/ThirdStackNavigationScreen/RnNavigationScreen';
+import DetailsScreen from './TabThird/ThirdStackNavigationScreen/RnNavigationScreen/DetailsScreen';
+import CreatePostScreen from './TabThird/ThirdStackNavigationScreen/RnNavigationScreen/CreatePostScreen';
 
 /** tab2 */
 import PinNumberTestScreen from './TabSecond/PinNumberTestScreen';
 
+/** tab 3-1 */
+import FirstAppScreen from './TabThird/ThirdStackRNScreen/FirstAppScreen';
+import ListViewScreen from './TabThird/ThirdStackRNScreen/ListViewScreen';
+import RNDesignScreen from '~/screens/TabThird/ThirdStackRNScreen/RNDesignScreen';
+
+/** tab 3-2 */
+
 import { Image, Alert, View } from 'react-native';
+import CosBallAppApiScreen from './TabFourth/CosBallAppApiScreen';
+import ThirdStackRNScreen from './TabThird/ThirdStackRNScreen';
+import ThirdStackNavigationScreen from './TabThird/ThirdStackNavigationScreen';
+
+import PermissionScreen from './TabFirst/PermissionScreen';
+
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -90,10 +102,19 @@ function LogoTitle() {
     );
 }
 
+const ThirdTabStack = () => {
+    return (
+        <MaterailTopTab.Navigator>
+            <Stack.Screen name={NaviNames.ThirdStackRNScreen} component={ThirdStackRNScreen} />
+            <Stack.Screen name={NaviNames.ThirdStackNavigationScreen} component={ThirdStackNavigationScreen} />
+        </MaterailTopTab.Navigator>
+    )
+}
+
 const FourthTabStack = () => {
     return (
         <MaterailTopTab.Navigator>
-            <Stack.Screen name={NaviNames.TabFourth} component={FourthStack} />
+            <Stack.Screen name={NaviNames.TabFourth} component={TabFourth} />
             <Stack.Screen name={NaviNames.MapScreen} component={MapScreen} />
         </MaterailTopTab.Navigator>
     )
@@ -121,7 +142,7 @@ const MainBottomTabStack = () => {
         />
         <MaterialBottomTab.Screen
             name="TabThird"
-            component={TabThird}
+            component={ThirdTabStack}
             options={{
                 tabBarColor: '#E64A19',
                 tabBarLabel: 'Third',
@@ -144,18 +165,50 @@ const FirstStack = ({navigation}:Props) => {
     return (
         <Stack.Navigator>
             <Stack.Screen name={NaviNames.ReduxScreen} component={ReduxScreen} options={HeaderBackOptions} />
-            <Stack.Screen name={NaviNames.ComponetsScreen} component={ComponetsScreen}  options={HeaderBackOptions}/>
+          
             <Stack.Screen name={NaviNames.NetWorkingScreen} component={NetWorkingScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.LottoGameScreen} component={LottoGameScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.AnimatableScreen} component={AnimatableScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.JavaScriptScreen} component={JavaScriptScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.NativeBridgeScreen} component={NativeBridgeScreen}  options={HeaderBackOptions}/>
-            <Stack.Screen name={NaviNames.ReactNativeScreen} component={ReactNativeScreen}  options={HeaderBackOptions}/>
+           
             <Stack.Screen name={NaviNames.ScanScreen} component={ScanScreen} options={HeaderBackOptions} />
             <Stack.Screen name={NaviNames.ModalTestScreen} component={ModalTestScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.SqlLightScreen} component={SqlLightScreen}  options={HeaderBackOptions}/>
             <Stack.Screen name={NaviNames.MapScreen} component={MapScreen}  options={HeaderBackOptions}/>
-            <Stack.Screen name={NaviNames.RnNavigationScreen} component={RnNavigationScreen} options={{headerShown:false}}/>
+            <Stack.Screen name={NaviNames.PermissionScreen} component={PermissionScreen}  options={HeaderBackOptions}/>
+
+
+
+
+            
+        </Stack.Navigator>
+    )
+}
+
+const SecondStack = ({navigation}:Props) => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name={NaviNames.PinNumberTestScreen} component={PinNumberTestScreen} options={HeaderBackOptions}/>
+        </Stack.Navigator>
+    )
+}
+
+const ThirdStackRN = ({navigation}:Props) => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name={"FirstAppScreen"} component={FirstAppScreen} options={HeaderBackOptions}/>
+            <Stack.Screen name={"ListViewScreen"} component={ListViewScreen}  options={HeaderBackOptions}/>
+            <Stack.Screen name={NaviNames.RNDesignScreen} component={RNDesignScreen}  options={HeaderBackOptions}/>
+            <Stack.Screen name={NaviNames.ComponetsScreen} component={ComponetsScreen}  options={HeaderBackOptions}/>
+        </Stack.Navigator>
+    )
+}
+
+const ThirdStackNavigation = ({navigation}:Props) => {
+    return (
+        <Stack.Navigator>
+         <Stack.Screen name={NaviNames.RnNavigationScreen} component={RnNavigationScreen} options={{headerShown:false}}/>
             <Stack.Screen name={'DetailsScreen'} component={DetailsScreen} initialParams={{ itemId: 0 }} options={({ route }: Props) => ({ title: route.params.name })} />
             <Stack.Screen name={'CreatePostScreen'} component={CreatePostScreen} initialParams={{ itemId: 0 }} options={{
                title: 'My home',
@@ -180,26 +233,12 @@ const FirstStack = ({navigation}:Props) => {
     )
 }
 
-const SecondStack = ({navigation}:Props) => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name={NaviNames.PinNumberTestScreen} component={PinNumberTestScreen} options={HeaderBackOptions}/>
-        </Stack.Navigator>
-    )
-}
-
-const ThirdStack = ({navigation}:Props) => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name={NaviNames.PinNumberTestScreen} component={PinNumberTestScreen} options={HeaderBackOptions} />
-        </Stack.Navigator>
-    )
-}
 
 const FourthStack = ({navigation}:Props) => {
     return (
         <Stack.Navigator>
             <Stack.Screen name={NaviNames.TabFourth} component={TabFourth}  options={{headerShown:false}}/>
+            <Stack.Screen name={NaviNames.CosBallAppApiScreen} component={CosBallAppApiScreen} options={HeaderBackOptions}/>
         </Stack.Navigator>
     )
 }
@@ -211,27 +250,33 @@ const RootStack = () => {
             screenOptions={HeaderscreenOptions}>
             <Stack.Screen
                 name={NaviNames.MainBottomTabStack}
-                component={MainBottomTabStack}/>
+                component={MainBottomTabStack} />
+
             <Stack.Screen
                 name={NaviNames.FirstStack}
                 component={FirstStack}
-                options={{headerShown:false}}
-                />
+                options={{ headerShown: false }} />
+
             <Stack.Screen
                 name={NaviNames.SecondStack}
                 component={SecondStack}
-                options={{ headerShown:false }}
-            />
-             <Stack.Screen
-                name={NaviNames.ThirdStack}
-                component={ThirdStack}
-                options={{ headerShown:false }}
-            />
-             <Stack.Screen
+                options={{ headerShown: false }} />
+
+            <Stack.Screen
+                name={NaviNames.ThirdStackRN}
+                component={ThirdStackRN}
+                options={{ headerShown: false }} />
+
+            <Stack.Screen
+                name={NaviNames.ThirdStackNavigation}
+                component={ThirdStackNavigation}
+                options={{ headerShown: false }} />
+
+            <Stack.Screen
                 name={NaviNames.FourthStack}
                 component={FourthStack}
-                options={{ headerShown:false }}
-            />
+                options={{ headerShown: false }} />
+
         </Stack.Navigator>
     )
 };

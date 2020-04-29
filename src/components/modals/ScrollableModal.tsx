@@ -6,14 +6,11 @@ import { Dimensions, Platform, StyleSheet, Alert, ScrollView } from 'react-nativ
 interface Props {
     isModalVisible: boolean
     title?: string
-    msg: string
-    cancelText?: string
-    confirmText?: string
-    confirmClick?: () => void
-    cancelClick: (reqData?: string) => void
+    msg?: string
+    close: (reqData?: string) => void
 }
 
-const ScrollableModal = ({ isModalVisible, title, msg, cancelText, confirmText, confirmClick, cancelClick }: Props) => {
+const ScrollableModal = ({ isModalVisible, title, msg, close }: Props) => {
     
     let scrollViewRef: RefObject<ScrollView> = React.createRef();
     const [scrollOffset, setScrollOffset] = useState<number>(0)
@@ -44,7 +41,7 @@ const ScrollableModal = ({ isModalVisible, title, msg, cancelText, confirmText, 
         <View>
             <Modal
                 isVisible={isModalVisible}
-                onSwipeComplete={() => { cancelClick() }}
+                onSwipeComplete={() => { close() }}
                 swipeDirection={['down']}
                 scrollTo={(e)=>{handleScrollTo(e)}}
                 scrollOffset={scrollOffset}

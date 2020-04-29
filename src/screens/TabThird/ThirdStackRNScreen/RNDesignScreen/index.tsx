@@ -4,12 +4,12 @@ import { StyleSheet, Image, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 
-interface PropsSampleView {
+interface Props {
     propsVal: string
     children: string
 }
 
-const PropsSampleView = ({ children, propsVal }: PropsSampleView) => {
+const RNDesignScreen = ({ children, propsVal }: Props) => {
     let showIngTextInter: number
     const [isShowingText, setShowingText] = useState(true);
 
@@ -25,31 +25,32 @@ const PropsSampleView = ({ children, propsVal }: PropsSampleView) => {
 
     return (
         <ScrollView>
-            <View>
-                <View >
+            <View style={{padding:15}}>
+
+                <View style={[styles.box]}>
                     <Text style={styles.textBigBlue}>{children}</Text>
                     <Text style={styles.textBigRed}>{propsVal}</Text>
                     <Text>{isShowingText ? 'true' : 'flase'}</Text>
                 </View>
-                <View style={{ flexDirection: 'row' }} >
+
+                <View style={[{flexDirection:'row'}, styles.box]} >
                     <Text>Fixed</Text>
                     <View style={{ width: 50, height: 50, backgroundColor: 'powderblue' }} />
                     <View style={{ width: 100, height: 100, backgroundColor: 'skyblue' }} />
                     <View style={{ width: 150, height: 150, backgroundColor: 'steelblue' }} />
                 </View>
-                <View style={{ height: 500 }}>
+
+                <View style={ [{ height: 500 }, styles.box]}>
                     <View style={{ flex: 1, backgroundColor: 'powderblue' }} />
                     <View style={{ flex: 2, backgroundColor: 'skyblue' }} />
                     <View style={{ flex: 3, backgroundColor: 'steelblue' }} />
                 </View>
 
-                <View style={{ height: 500, backgroundColor: '#EAEA' }}>
+                <View style={ [{ height: 500, backgroundColor: '#EAEA' },styles.box]}>
                     <View style={{ width: 50, height: 50, backgroundColor: 'powderblue', alignSelf: 'center' }} />
                     <View style={{ height: 50, backgroundColor: 'skyblue', alignContent: 'center' }} >
                         <Text>Text</Text>
                     </View>
-
-
                     <View style={{ width: 50, height: 50, backgroundColor: 'steelblue' }} />
                 </View>
 
@@ -93,13 +94,18 @@ const PropsSampleView = ({ children, propsVal }: PropsSampleView) => {
 const ReactNativeScreen = () => {
     return (<Container>
         <Content >
-            <PropsSampleView propsVal='props'>children</PropsSampleView>
+            <RNDesignScreen propsVal='props'>children</RNDesignScreen>
         </Content>
     </Container>);
 }
 
 const styles = StyleSheet.create(
     {
+        box:{
+             marginTop:10,
+             padding:10,
+             borderColor:'#EAEAEA' , borderWidth:2
+        },
         textBigBlue: {
             color: 'blue',
             fontWeight: '900',

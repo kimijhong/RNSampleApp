@@ -70,3 +70,5 @@ const PermissionScreen = ()=>
         </Content>
     </Container>)
 }
+
+export default PermissionScreen;
